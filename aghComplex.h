@@ -7,8 +7,9 @@ private:
 public:
     aghComplex(){ re = 0; im = 0;}
     aghComplex(double re, double im);
-    aghComplex operator+ (const aghComplex&);
-    aghComplex operator* (const aghcomplex&);
+    ~aghComplex();
+    aghComplex& operator+ (const aghComplex&);
+    aghComplex& operator* (const aghcomplex&);
     //cos przeciazyc zeby dzialalo z aghMatrix
 };
 
