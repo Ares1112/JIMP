@@ -15,6 +15,12 @@ class aghMatrix{
         void setItem(int wier, int kol, T el);
         void setItems(T* elem);
         void setItems(int r, int c, ...);
+        aghMatrix& operator= (const aghMatrix&);
+        aghMatrix operator+ (const aghMatrix&);
+        aghMatrix operator* (const aghMatrix&);
+        aghMatrix operator== (const aghMatrix&);
+        aghMatrix operator!= (const aghMatrix&);
+        T operator() (int a, int b); 
 };
 
 #endif
