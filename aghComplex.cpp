@@ -9,11 +9,11 @@ aghComplex::~aghComplex(){
 
 }
 
-const aghComplex::aghComplex& operator+ (const aghComplex& A){
+const aghComplex aghComplex::operator+ (const aghComplex& A){
     return aghComplex(re+A.re, im+A.im);
 }
 
-const aghComplex::aghComplex& operator* (const aghComplex& A){
+const aghComplex aghComplex::operator* (const aghComplex& A){
     return aghComplex(re*A.re-im*A.im, re*A.im+im*A.re);
 }
 

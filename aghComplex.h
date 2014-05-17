@@ -1,6 +1,6 @@
 /**
 * \file aghComplex.h
-* \author Arkadiusz B³asiak, Piotr Jaromin
+* \author Arkadiusz Blasiak, Piotr Jaromin
 * \date 15.05.2014
 * \brief Klasa aghComplex
 */
@@ -12,50 +12,50 @@
 
 /**
 * \class aghComplex
-* \author Arkadiusz B³asiak, Piotr Jaromin
+* \author Arkadiusz Blasiak, Piotr Jaromin
 * \date 15.05.2014
-* \brief Klasa reprezentuj¹ca liczbê zespolon¹
+* \brief Klasa reprezentujaca liczbe zespolona
 */
 
 class aghComplex{
 private:
-    double re; ///< czêœæ rzeczywista
-    double im; ///< czêœæ urojona
+    double re; ///< czesc rzeczywista
+    double im; ///< czesc urojona
 public:
    /// \brief Konstruktor bezparametrowy
     aghComplex(){ re = 0; im = 0;}
     /// \brief Konstruktor parametrowy
     ///
-    /// \param re - czêœæ rzeczywista
-    /// \param im - czêœæ urojona
+    /// \param re - czesc rzeczywista
+    /// \param im - czesc urojona
     aghComplex(double re, double im);
 
     /// \brief Destruktor
     ~aghComplex();
 
-    /// \brief przeci¹¿ony operator dodawania
+    /// \brief przeciazony operator dodawania
     ///
     /// \return dodana liczba
     const aghComplex operator+ (const aghComplex&);
 
-    /// \brief przeci¹¿ony operator mno¿enia
+    /// \brief przeciazony operator mnozenia
     ///
-    /// \return pomno¿ona liczba
-    const aghComplex operator* (const aghcomplex&);
+    /// \return pomnozona liczba
+    const aghComplex operator* (const aghComplex&);
 
-    /// \brief przeci¹¿ony operator przypisania
+    /// \brief przeciazony operator przypisania
     ///
     /// \return dodana liczba
     void operator+=(const aghComplex&);
 
-    /// \brief przeci¹¿ony operator porównania
+    /// \brief przeciazony operator porownania
     ///
-    /// \return TRUE jeœli liczby s¹ równe
+    /// \return TRUE jesli liczby sa równe
     bool operator==(const aghComplex&);
 
-    /// \brief przeci¹¿ony operator relacji
+    /// \brief przeciazony operator relacji
     ///
-    /// \return TRUE jeœli liczby s¹ ró¿ne
+    /// \return TRUE jesli liczby sa rozne
     bool operator!=(const aghComplex&);
 };
 
