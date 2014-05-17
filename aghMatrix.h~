@@ -258,7 +258,7 @@ const aghMatrix<T> aghMatrix<T>::operator*(aghMatrix<T> const& A)
    {
    	for (int i=0; i<wier; i++){
     		for (int j=0; j<A.kol; j++){
-            
+            A.tab[i][j] = T();
       		for (int p=0; p<kol; p++){
 						Temp.tab[i][j] = Temp.tab[i][j] + tab[i][p]*A.tab[p][j];
             }
