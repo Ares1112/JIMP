@@ -1,5 +1,5 @@
 #include "aghComplex.h"
-
+#include "aghInclude.h"
 aghComplex::aghComplex(double _re, double _im){
     this->re = _re;
     this->im = _im;
@@ -27,5 +27,6 @@ bool aghComplex::operator==(const aghComplex& A){
 }
 
 bool aghComplex::operator!=(const aghComplex& A){
-   return !(*this == A);
+   return!((re == A.re) && (im == A.im));
 }
+

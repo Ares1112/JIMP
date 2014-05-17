@@ -73,7 +73,7 @@ class aghException
 
   /// \brief The class destructor
   virtual ~aghException(void);
-  
+
   /// \brief Virtual function that returns the error code
   ///
   /// \return a value of the _errorCode field

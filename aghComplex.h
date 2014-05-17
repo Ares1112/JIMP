@@ -57,6 +57,7 @@ public:
     ///
     /// \return TRUE jesli liczby sa rozne
     bool operator!=(const aghComplex&);
+
 };
 
 #endif

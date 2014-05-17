@@ -1,4 +1,5 @@
 #include "aghMatrix.h"
+
 template<>
 void aghMatrix<char*>::setItem(int r, int c, char* elem)
 {
@@ -155,6 +156,12 @@ bool aghMatrix<char*>::operator==(aghMatrix<char*> & A) const
         return false;
 
 	return true;
+}
+
+template<>
+bool aghMatrix<char*>::operator!=(aghMatrix<char*> & A) const
+{
+   return !(*this == A);
 }
 
 template<>

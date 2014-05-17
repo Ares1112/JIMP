@@ -1,7 +1,6 @@
 #ifndef 	AGHMATRIX_H
 #define AGHMATRIX_H
-#include <iostream>
-using namespace std;
+#include "aghInclude.h"
 template <class T>
 class aghMatrix
 {
@@ -29,6 +28,37 @@ public:
    T operator() (int w, int k) const;
 
 };
+
+   template<>
+   void aghMatrix<char*>::setItem(int r, int c, char* el);
+
+   template<>
+   void aghMatrix<char>::setItems(int r, int c, ...);
+
+   template<>
+   void aghMatrix<char*>::setItems(int r, int c, ...);
+
+   template<>
+   aghMatrix<char*> const & aghMatrix<char*>::operator=(aghMatrix<char*> const& A);
+
+   template<>
+   const aghMatrix<char> aghMatrix<char>::operator+(aghMatrix<char> const & A);
+
+   template<>
+   const aghMatrix<char*> aghMatrix<char*>::operator+(aghMatrix<char*> const & A);
+
+   template<>
+   const aghMatrix<char> aghMatrix<char>::operator*(aghMatrix<char> const& A);
+
+   template<>
+   const aghMatrix<char*> aghMatrix<char*>::operator*(aghMatrix<char*> const & A);
+
+   template<>
+   bool aghMatrix<char*>::operator==(aghMatrix<char*> & A) const;
+
+   template<>
+   bool aghMatrix<char*>::operator!=(aghMatrix<char*> & A) const;
+
 
 
 template<class T>
@@ -224,16 +254,16 @@ const aghMatrix<T> aghMatrix<T>::operator*(aghMatrix<T> const& A)
 {
 	aghMatrix<T> Temp(wier, A.kol);
 
-   for(int i=0; i<wier; i++)
-		for(int j=0; j<A.kol; j++)
-			Temp.tab[i][j]=0;
-
    if(kol==A.wier)
    {
-   	for (int i=0; i<wier; i++)
-    		for (int j=0; j<A.kol; j++)
-      		for (int p=0; p<kol; p++)
+   	for (int i=0; i<wier; i++){
+    		for (int j=0; j<A.kol; j++){
+            A.tab[i][j] = T();
+      		for (int p=0; p<kol; p++){
 						Temp.tab[i][j] = Temp.tab[i][j] + tab[i][p]*A.tab[p][j];
+            }
+    		}
+   	}
 
 	Temp.wier=wier;
 	Temp.kol=A.kol;
