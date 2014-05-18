@@ -1,5 +1,14 @@
+/**
+* \file aghComplex.cpp
+* \author Arkadiusz Blasiak, Piotr Jaromin
+* \date 15.05.2014
+* \brief Definicje metod dla klasy aghComplex
+*/
+// -------------------------------------------------------------------------
+
 #include "aghComplex.h"
 #include "aghInclude.h"
+
 aghComplex::aghComplex(double _re, double _im){
     this->re = _re;
     this->im = _im;

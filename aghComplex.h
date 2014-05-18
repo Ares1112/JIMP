@@ -2,7 +2,7 @@
 * \file aghComplex.h
 * \author Arkadiusz Blasiak, Piotr Jaromin
 * \date 15.05.2014
-* \brief Klasa aghComplex
+* \brief Klasa aghComplex i jej deklaracje metod
 */
 // -------------------------------------------------------------------------
 

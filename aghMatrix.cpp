@@ -1,3 +1,11 @@
+/**
+* \file aghMatrix.cpp
+* \author Arkadiusz Blasiak, Piotr Jaromin
+* \date 17.05.2014
+* \brief Definicje metod specjalizowanych dla klasy aghMatrix
+*/
+// -------------------------------------------------------------------------
+
 #include "aghMatrix.h"
 
 template<>
@@ -16,7 +24,7 @@ void aghMatrix<char*>::setItem(int r, int c, char* elem)
 	  		throw aghException(0, "Nieprawidlowy index", __FILE__, __LINE__);
    }
 }
-
+// -------------------------------------------------------------------------
 
 template<>
 void aghMatrix<char>::setItems(int r, int c, ...)
@@ -37,7 +45,7 @@ void aghMatrix<char>::setItems(int r, int c, ...)
 	   va_end(wart);
 	}
 }
-
+// -------------------------------------------------------------------------
 
 template<>
 void aghMatrix<char*>::setItems(int r, int c, ...) {
@@ -62,7 +70,7 @@ void aghMatrix<char*>::setItems(int r, int c, ...) {
    }
    va_end(lista);
 }
-
+// -------------------------------------------------------------------------
 
 template<>
 const aghMatrix<char> aghMatrix<char>::operator+(const aghMatrix<char>& A)
@@ -86,6 +94,7 @@ const aghMatrix<char> aghMatrix<char>::operator+(const aghMatrix<char>& A)
    else
 	throw aghException(0, "Macierze nie sa takie same", __FILE__, __LINE__);
 }
+// -------------------------------------------------------------------------
 
 template<>
 const aghMatrix<char> aghMatrix<char>::operator*(const aghMatrix<char>& A)
@@ -118,6 +127,7 @@ const aghMatrix<char> aghMatrix<char>::operator*(const aghMatrix<char>& A)
 	throw aghException(0, "Zle rozmiary macierzy", __FILE__, __LINE__);
 
 }
+// -------------------------------------------------------------------------
 
 template<>
 aghMatrix<char*> const & aghMatrix<char*>::operator=(aghMatrix<char*> const & A)
@@ -139,6 +149,7 @@ aghMatrix<char*> const & aghMatrix<char*>::operator=(aghMatrix<char*> const & A)
 	kol=A.kol;
    return *this;
 }
+// -------------------------------------------------------------------------
 
 template<>
 bool aghMatrix<char*>::operator==(aghMatrix<char*> & A) const
@@ -157,6 +168,7 @@ bool aghMatrix<char*>::operator==(aghMatrix<char*> & A) const
 
 	return true;
 }
+// -------------------------------------------------------------------------
 
 template<>
 bool aghMatrix<char*>::operator!=(aghMatrix<char*> & A) const
@@ -206,7 +218,7 @@ const aghMatrix<char*> aghMatrix<char*>::operator+(aghMatrix<char*> const& A)
 	else
 	throw aghException(0, "Zle rozmiary macierzy", __FILE__, __LINE__);
 }
-
+// -------------------------------------------------------------------------
 
 template<>
 const aghMatrix<char*> aghMatrix<char*>::operator*(aghMatrix<char*> const& A)
@@ -284,3 +296,4 @@ const aghMatrix<char*> aghMatrix<char*>::operator*(aghMatrix<char*> const& A)
  			throw aghException(0, "Zle rozmiary macierzy", __FILE__, __LINE__);
 
 }
+// -------------------------------------------------------------------------
