@@ -6,7 +6,7 @@
 */
 // -------------------------------------------------------------------------
 
-#ifndef 	AGHMATRIX_H
+#ifndef    AGHMATRIX_H
 #define AGHMATRIX_H
 
 #include "aghInclude.h"
@@ -23,7 +23,7 @@ template <class T>
 class aghMatrix
 {
 private:
-	int wier;  ///< liczba wierszy
+   int wier;  ///< liczba wierszy
    int kol;   ///< liczba kolumn
    T** tab;   ///< Tablica zawierajaca elementy macierzy
 
@@ -34,7 +34,7 @@ private:
    void rezerwuj(int w, int k);
 
    /// \brief Metoda zwalniajaca pamiec zarezerwowana dla macierzy
-	void zwolnij();
+   void zwolnij();
 
 public:
    /// \brief Konstruktor bezparametrowy klasy
@@ -69,11 +69,11 @@ public:
    void setItems(int r, int c, ...);
 
    /// \brief Metoda wypisujaca elementy macierzy
-	void wypisz();
+   void wypisz();
 
-	/// \brief Przeciazony operator przypisania
-	///
-	/// \return Macierz po przypisaniu
+   /// \brief Przeciazony operator przypisania
+   ///
+   /// \return Macierz po przypisaniu
    aghMatrix const & operator=(aghMatrix<T> const &A);
 
    /// \brief przeciazony operator dodawania
@@ -94,9 +94,9 @@ public:
    /// \brief przeciazony operator relacji
    ///
    /// \return TRUE jesli macierze sa rozne
-	bool operator!=(aghMatrix<T>& A) const;
+   bool operator!=(aghMatrix<T>& A) const;
 
-	/// \brief przeciazony operator dostepu
+   /// \brief przeciazony operator dostepu
    ///
    /// \param w - wiersz
    /// \param k - kolumna
@@ -191,9 +191,9 @@ aghMatrix<T>::aghMatrix(int w, int k)
 template<class T>
 aghMatrix<T>::aghMatrix()
 {
-	wier=0;
-	kol=0;
-	tab=NULL;
+   wier=0;
+   kol=0;
+   tab=NULL;
 }
 // -------------------------------------------------------------------------
 
@@ -207,12 +207,12 @@ aghMatrix<T>::~aghMatrix()
 template<class T>
 void aghMatrix<T>::wypisz()
 {
-	for(int i=0; i<wier; i++)
-	{
-		for(int j=0; j<kol; j++)
-			cout<<tab[i][j]<<" ";
-	   cout<<endl;
-	}
+   for(int i=0; i<wier; i++)
+   {
+      for(int j=0; j<kol; j++)
+         cout<<tab[i][j]<<" ";
+      cout<<endl;
+   }
 }
 // -------------------------------------------------------------------------
 
@@ -220,44 +220,44 @@ template<class T>
 void aghMatrix<T>::rezerwuj(int w, int k)
 {
    if(w>0 && k>0)
-	{
+   {
       wier=w;
-		kol=k;
-		tab=new T * [w];
+      kol=k;
+      tab=new T * [w];
 
-		for(int i=0; i<w; i++){
-			tab[i]=new T [k];
+      for(int i=0; i<w; i++){
+         tab[i]=new T [k];
       for(int j = 0; j < kol; j++)
             tab[i][j] = T();
-	   }
+      }
 
-	}
-	else
-		throw aghException(0, "Zle wymiary macierzy", __FILE__, __LINE__);
+   }
+   else
+      throw aghException(0, "Zle wymiary macierzy", __FILE__, __LINE__);
 }
 // -------------------------------------------------------------------------
 
 template<class T>
 void aghMatrix<T>::zwolnij()
 {
-	for(int i = 0; i < wier; i++)
+   for(int i = 0; i < wier; i++)
    {
       delete [] tab[i];
    }
    delete [] tab;
-	wier=0;
-	kol=0;
-	tab=NULL;
+   wier=0;
+   kol=0;
+   tab=NULL;
 }
 // -------------------------------------------------------------------------
 
 template<class T>
 void aghMatrix<T>::setItem(int w, int k, T el)
 {
-	if(w>=0 && w<=wier && k>=0 && k<=kol)
-   	tab[w][k]=el;
-	else
-		throw aghException(0, "Zle wymiary macierzy", __FILE__, __LINE__);
+   if(w>=0 && w<=wier && k>=0 && k<=kol)
+      tab[w][k]=el;
+   else
+      throw aghException(0, "Zle wymiary macierzy", __FILE__, __LINE__);
 }
 // -------------------------------------------------------------------------
 
@@ -265,16 +265,16 @@ template<class T>
 void aghMatrix<T>::setItems(T* elementy)
 {
   if(!elementy) throw aghException(0, "Brak elementow", __FILE__, __LINE__);
-	else
-	{
-    	for(int i=0; i<wier; i++)
-		{
-			for(int j=0; j<kol; j++)
-			{
-				tab[i][j]=(*elementy);
-				elementy++;
-			}
-		}
+   else
+   {
+       for(int i=0; i<wier; i++)
+      {
+         for(int j=0; j<kol; j++)
+         {
+            tab[i][j]=(*elementy);
+            elementy++;
+         }
+      }
    }
 }
 // -------------------------------------------------------------------------
@@ -282,21 +282,21 @@ void aghMatrix<T>::setItems(T* elementy)
 template<class T>
 void aghMatrix<T>::setItems(int r, int c, ...)
 {
-	if(tab)
-		zwolnij();
-	else
-	{
-		rezerwuj(r, c);
+   if(tab)
+      zwolnij();
+   else
+   {
+      rezerwuj(r, c);
       va_list wart;
       va_start(wart, c);
 
-		for(int i=0; i<r; i++)
-			for(int j=0; j<c; j++)
-			{
-				tab[i][j]=va_arg(wart, T);
-			}
-	   va_end(wart);
-	}
+      for(int i=0; i<r; i++)
+         for(int j=0; j<c; j++)
+         {
+            tab[i][j]=va_arg(wart, T);
+         }
+      va_end(wart);
+   }
 }
 // -------------------------------------------------------------------------
 
@@ -310,12 +310,12 @@ aghMatrix<T> const & aghMatrix<T>::operator=(aghMatrix<T> const& A)
    rezerwuj(A.wier, A.kol);
 
   for(int i=0; i<A.wier; i++)
-	for(int j=0; j<A.kol; j++)
-		tab[i][j]=A.tab[i][j];
+   for(int j=0; j<A.kol; j++)
+      tab[i][j]=A.tab[i][j];
 
-	wier=A.wier;
-	kol=A.kol;
-	return *this;
+   wier=A.wier;
+   kol=A.kol;
+   return *this;
 }
 // -------------------------------------------------------------------------
 
@@ -323,48 +323,48 @@ template<class T>
 bool aghMatrix<T>::operator==(aghMatrix<T> & A) const
 {
 
-	if( (wier==A.wier) && (kol==A.kol))
-	{
-		for(int i=0; i<wier; i++)
-			for(int j=0; j<kol; j++)
-			{
-				if( (tab[i][j]) != (A.tab[i][j]) )
-					return false;
-			}
-	   return true;
-	}
-	else
+   if( (wier==A.wier) && (kol==A.kol))
+   {
+      for(int i=0; i<wier; i++)
+         for(int j=0; j<kol; j++)
+         {
+            if( (tab[i][j]) != (A.tab[i][j]) )
+               return false;
+         }
+      return true;
+   }
+   else
 
-	return false;
+   return false;
 }
 // -------------------------------------------------------------------------
 
 template<class T>
 bool aghMatrix<T>::operator!=(aghMatrix<T> & A) const
 {
-	if (*this==A) return false;
-	   else
-	return true;
+   if (*this==A) return false;
+      else
+   return true;
 }
 // -------------------------------------------------------------------------
 
 template<class T>
 const aghMatrix<T> aghMatrix<T>::operator+(aghMatrix<T> const& A)
 {
-	aghMatrix<T> Temp(wier, kol);
+   aghMatrix<T> Temp(wier, kol);
    if(wier==A.wier && kol==A.kol)
-	{
+   {
       for(int i = 0; i < wier; i++)
          for(int j = 0; j < kol; j++)
-				Temp.tab[i][j]=tab[i][j]+A.tab[i][j];
+            Temp.tab[i][j]=tab[i][j]+A.tab[i][j];
 
       Temp.wier=wier;
-		Temp.kol=kol;
+      Temp.kol=kol;
 
       return Temp;
-	}
-	else
-	throw aghException(0, "Zle rozmiary macierzy", __FILE__, __LINE__);
+   }
+   else
+   throw aghException(0, "Zle rozmiary macierzy", __FILE__, __LINE__);
 
 }
 // -------------------------------------------------------------------------
@@ -372,24 +372,24 @@ const aghMatrix<T> aghMatrix<T>::operator+(aghMatrix<T> const& A)
 template<class T>
 const aghMatrix<T> aghMatrix<T>::operator*(aghMatrix<T> const& A)
 {
-	aghMatrix<T> Temp(wier, A.kol);
+   aghMatrix<T> Temp(wier, A.kol);
 
    if(kol==A.wier)
    {
-   	for (int i=0; i<wier; i++){
-    		for (int j=0; j<A.kol; j++){
+      for (int i=0; i<wier; i++){
+          for (int j=0; j<A.kol; j++){
 
-      		for (int p=0; p<kol; p++){
-						Temp.tab[i][j] = Temp.tab[i][j] + tab[i][p]*A.tab[p][j];
+            for (int p=0; p<kol; p++){
+                  Temp.tab[i][j] = Temp.tab[i][j] + tab[i][p]*A.tab[p][j];
             }
-    		}
-   	}
-	Temp.wier = wier;
-	Temp.kol = A.kol;
-	return Temp;
-	}
-	else
-	   throw aghException(0, "Zle wymiary macierzy", __FILE__, __LINE__);
+          }
+      }
+   Temp.wier = wier;
+   Temp.kol = A.kol;
+   return Temp;
+   }
+   else
+      throw aghException(0, "Zle wymiary macierzy", __FILE__, __LINE__);
 }
 // -------------------------------------------------------------------------
 
@@ -398,8 +398,8 @@ T aghMatrix<T>::operator() (int w, int k) const
 {
    if(w<0 || w>wier || k<0 || k>kol)
       throw aghException(0, "Zly index", __FILE__, __LINE__);
-	else
-	   return tab[w][k];
+   else
+      return tab[w][k];
 }
 // -------------------------------------------------------------------------
 
